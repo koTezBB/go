@@ -12,13 +12,19 @@ type User struct {
 	avg_grades, happiness float64
 }
 
-func (u User) getAllInfo() string {
+func (u *User) getAllInfo() string {
 	return fmt.Sprintf("User name is: %s. he is %d", u.name, u.age)
+
+}
+
+func (u *User) setNewName(newName string) {
+	u.name = newName
 
 }
 
 func home_page(w http.ResponseWriter, r *http.Request) {
 	bob := User{"bob", 25, -45, 4.5, 0.6}
+	bob.setNewName("Alex")
 	fmt.Fprintf(w, bob.getAllInfo())
 }
 
