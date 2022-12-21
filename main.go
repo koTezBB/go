@@ -5,8 +5,21 @@ import (
 	"net/http"
 )
 
+type User struct {
+	name                  string
+	age                   uint16
+	money                 int16
+	avg_grades, happiness float64
+}
+
+func (u User) getAllInfo() string {
+	return fmt.Sprintf("User name is: %s. he is %d", u.name, u.age)
+
+}
+
 func home_page(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "go nice")
+	bob := User{"bob", 25, -45, 4.5, 0.6}
+	fmt.Fprintf(w, bob.getAllInfo())
 }
 
 func contacts_page(w http.ResponseWriter, r *http.Request) {
@@ -21,6 +34,7 @@ func handleRequests() {
 }
 
 func main() {
-	handleRequests()
+	//bob := User{name: "bob", age: 25, money: -45, avg_grades: 4.5, happiness: 0.6}
 
+	handleRequests()
 }
