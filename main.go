@@ -40,7 +40,6 @@ func handleRequests() {
 }
 
 func main() {
-	//bob := User{name: "bob", age: 25, money: -45, avg_grades: 4.5, happiness: 0.6}
 
 	handleRequests()
 }
